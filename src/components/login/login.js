@@ -5,11 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState }  from 'react';
+import useFirebase from "../hook/useFirebase";
 
 const auth = getAuth(app);
-
-function login() {
-
+const login = () =>{
+const {singInWithGoogle} = useFirebase();
 const [email,setEmail ] = useState('');
 const [password,setPassword] = useState('');
 const [registration,setRegistration] = useState('');
@@ -70,6 +70,7 @@ const handelformsubmit = (e) => {
 }
   return (
     <div className="">
+      
 
   <div className="reg w-50 mx-auto mt-3 mr-4">
     <h1>Please {registration ? 'Login':'Registration'}</h1>
@@ -95,6 +96,7 @@ const handelformsubmit = (e) => {
       <Button variant="primary" type="submit">
         {registration? 'login':'registration'}
       </Button>
+      <Button onClick={singInWithGoogle}> Sign in with Google</Button>
     </Form>
         </div>
  
