@@ -13,8 +13,9 @@ export const header = () => {
             <Link to="/products">Products</Link>
             <Link to="/orders">Order</Link>
             <Link to="/reviews">Reviews</Link>
+            <Link to="/reviews">Check</Link>
             <Link to="/login">
-              login
+              Login
 
               </Link>
         </nav>
