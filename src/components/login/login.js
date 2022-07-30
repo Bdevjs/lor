@@ -20,7 +20,7 @@ const handelEmail = (e) => {
   setEmail(e.target.value);
   
 }
-const handelPass = (e) => {
+const handelPass = (e) => { 
 
   setPassword(e.target.value);
   
