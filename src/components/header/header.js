@@ -7,7 +7,7 @@ export const header = () => {
   const {user} = useFirebase();
   return (
     <div>
-      <h1>{user.displayName}</h1>
+      <h1>{user.photoURL}</h1>
         <nav>
             <Link to="/">Home</Link>
             <Link to="/products">Products</Link>
