@@ -9,7 +9,7 @@ const auth = getAuth(app);
 const useFirebase = ( ) => {
     const [user, setUser] = useState({});
     
-    const singInWithGoogle = ( ) => {
+    const singInWithGoogleR = ( ) => {
         
        signInWithPopup(auth,googleProvider)
        .then(result => {
@@ -24,6 +24,6 @@ const useFirebase = ( ) => {
            setUser(user);
          })
    },[])
-   return {user, singInWithGoogle}
+   return {user, singInWithGoogleR}
  }
   export default useFirebase;

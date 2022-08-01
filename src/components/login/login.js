@@ -6,10 +6,19 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState }  from 'react';
 import useFirebase from "../hook/useFirebase";
+import {useSignInWithGoogle} from "react-firebase-hooks/auth"
+
 
 const auth = getAuth(app);
+
+
+
+
 const login = () =>{
-const {singInWithGoogle} = useFirebase();
+
+const [signInWithGoogle, user] = useSignInWithGoogle(auth)
+
+const {singInWithGoogleR} = useFirebase();
 const [email,setEmail ] = useState('');
 const [password,setPassword] = useState('');
 const [registration,setRegistration] = useState('');
@@ -96,7 +105,8 @@ const handelformsubmit = (e) => {
       <Button variant="primary" type="submit">
         {registration? 'login':'registration'}
       </Button>
-      <Button onClick={singInWithGoogle}> Sign in with Google</Button>
+      <Button onClick={singInWithGoogleR}> Sign in with Google</Button>
+      <Button onclick={signInWithGoogle}>Sign in with Google hooks</Button>
     </Form>
         </div>
  
