@@ -13,9 +13,10 @@ export const header = () => {
 
   return (
     <div>
-    {user?<h1>{ userdetails.creatAt}</h1>:<h1>Nai</h1> }
+    {user?
+      <h1>{user.photoURL}</h1>:<h1>nai</h1>
       
-      
+    }
         <nav>
             <Link to="/">Home</Link>
             <Link to="/products">Products</Link>

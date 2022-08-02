@@ -19,7 +19,7 @@ const useFirebase = ( ) => {
       });
     }
     
-    const singInWithGoogle = ( ) => {
+    const singInWithGoogleR = ( ) => {
         
        signInWithPopup(auth,googleProvider)
        .then(result => {
