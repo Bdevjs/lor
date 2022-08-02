@@ -6,10 +6,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState }  from 'react';
 import useFirebase from "../hook/useFirebase";
-
 const auth = getAuth(app);
+
+
+
 const login = () =>{
-const {singInWithGoogle} = useFirebase();
+
+
+const {singInWithGoogle,logouthandel} = useFirebase();
 const [email,setEmail ] = useState('');
 const [password,setPassword] = useState('');
 const [registration,setRegistration] = useState('');
@@ -97,6 +101,7 @@ const handelformsubmit = (e) => {
         {registration? 'login':'registration'}
       </Button>
       <Button onClick={singInWithGoogle}> Sign in with Google</Button>
+      <Button onClick={logouthandel}> Logout</Button>
     </Form>
         </div>
  
