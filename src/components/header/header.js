@@ -2,19 +2,26 @@ import  React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import './header.css';
 import useFirebase from "../hook/useFirebase"
+import { useAuthState } from 'react-firebase-hooks/auth';
+import {getAuth} from "firebase/auth"
+import app from "../../firebase.init";
 
-
+const auth = getAuth(app);
 
 export const header = () => {
 
-  const {user,logouthandel,userdetails} = useFirebase();
-  console.log(userdetails)
+//React firebase Hooks
+const [user] = useAuthState(auth);
+
+  //Google direact 
+  //const {user,logouthandel,userdetails} = useFirebase();
+  //console.log(userdetails)
  
 
   return (
     <div>
     {user?
-      <h1>{user.photoURL}</h1>:<h1>nai</h1>
+      <h1>{user.displayName}</h1>:<h1>nai</h1>
       
     }
         <nav>
@@ -23,9 +30,10 @@ export const header = () => {
             <Link to="/orders">Order</Link>
             <Link to="/reviews">Reviews</Link>
             <Link to="/login">
-              {user?<span onClick={logouthandel}>Logout</span>:"Login"}
+              {/* {user?<span onClick={logouthandel}>Logout</span>:"Login"} */}
 
               </Link>
+            <Link to ="/"></Link>
         </nav>
     
     </div>

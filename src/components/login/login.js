@@ -1,42 +1,44 @@
 
-import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth";
-import app from "../../firebase.init";
+import {getAuth, 
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword} from "firebase/auth"; //All
+        
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState }  from 'react';
-import useFirebase from "../hook/useFirebase";
-const auth = getAuth(app);
+import useFirebase from "../hook/useFirebase";//firebase
+import {useSignInWithGoogle} from "react-firebase-hooks/auth"//hooks
+import app from "../../firebase.init"; //both
+const auth = getAuth(app);// both
 
-
+//Google login // normal login // firebase hook login
 
 const login = () =>{
 
+const [signInwithGoogle] = useSignInWithGoogle(auth); //hooks
+const {singInWithGooglee,logouthandel} = useFirebase();//firebase
+const [email,setEmail ] = useState('');//normal
+const [password,setPassword] = useState('');//normal
+const [registration,setRegistration] = useState('');//normal
 
-const {singInWithGoogle,logouthandel} = useFirebase();
-const [email,setEmail ] = useState('');
-const [password,setPassword] = useState('');
-const [registration,setRegistration] = useState('');
-
+//normal
 const handelEmail = (e) => {
-
-  console.log(e.target.value);
-  setEmail(e.target.value);
-  
+  setEmail(e.target.value);//store email  
 }
-const handelPass = (e) => { 
-
-  setPassword(e.target.value);
-  
+//normal
+const handelPass = (e) => {
+  setPassword(e.target.value); //store password  
 }
-
+//Normaal
 const handelRegister =(e) =>{
-  setRegistration(e.target.checked);
+  setRegistration(e.target.checked); //checkbok information store
 }
 
+//Normal
 const handelformsubmit = (e) => {
 
-  if(registration){
+  if(registration){ //if registration is == True (User have already a account)
     
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
@@ -48,13 +50,9 @@ const handelformsubmit = (e) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-      });
-     
+      }); 
   }
   else{
-  
-    console.log(registration)
-  
     createUserWithEmailAndPassword(auth, email, password)
     .then((result) => {
       // Signed in 
@@ -100,8 +98,9 @@ const handelformsubmit = (e) => {
       <Button variant="primary" type="submit">
         {registration? 'login':'registration'}
       </Button>
-      <Button onClick={singInWithGoogle}> Sign in with Google</Button>
+      <Button onClick={singInWithGooglee}> Sign in with Google</Button>
       <Button onClick={logouthandel}> Logout</Button>
+      <Button onClick={()=> signInwithGoogle()}> Hooks</Button>
     </Form>
         </div>
  
