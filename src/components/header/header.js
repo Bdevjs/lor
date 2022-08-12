@@ -8,13 +8,13 @@ import app from "../../firebase.init";
 
 const auth = getAuth(app);
 
-export const header = () => {
+export const Header = () => {
 
 //React firebase Hooks
 const [user] = useAuthState(auth);
 
   //Google direact 
-  //const {user,logouthandel,userdetails} = useFirebase();
+  const {logouthandel,userdetails} = useFirebase();
   //console.log(userdetails)
  
 
@@ -30,7 +30,7 @@ const [user] = useAuthState(auth);
             <Link to="/orders">Order</Link>
             <Link to="/reviews">Reviews</Link>
             <Link to="/login">
-              {/* {user?<span onClick={logouthandel}>Logout</span>:"Login"} */}
+               {user?<span onClick={logouthandel}>Logout</span>:"Login"}
 
               </Link>
             <Link to ="/"></Link>
@@ -40,4 +40,4 @@ const [user] = useAuthState(auth);
   );
 }
 
-export default header;
+export default Header;
